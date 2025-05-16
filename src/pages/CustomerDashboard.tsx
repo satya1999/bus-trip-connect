@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, MapPin, Bus, Clock } from "lucide-react";
 import { BookingStatus } from "@/lib/types";
 import { useFormatters } from "@/hooks/useFormatters";
-import { StatusBadge } from "@/components/ui/status-badge";
+import { StatusBadge, getStatusColor } from "@/components/ui/status-badge";
 
 // Mock data for bookings
 const mockBookings = [
