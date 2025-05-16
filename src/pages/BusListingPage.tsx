@@ -106,7 +106,7 @@ export default function BusListingPage() {
                   <SelectValue placeholder="All Locations" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Locations</SelectItem>
+                  <SelectItem value="all">All Locations</SelectItem>
                   {locations.map(loc => (
                     <SelectItem key={loc} value={loc}>{loc}</SelectItem>
                   ))}
@@ -122,7 +122,7 @@ export default function BusListingPage() {
                   <SelectValue placeholder="All Types" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Types</SelectItem>
+                  <SelectItem value="all">All Types</SelectItem>
                   {busTypes.map(type => (
                     <SelectItem key={type} value={type}>{type}</SelectItem>
                   ))}
