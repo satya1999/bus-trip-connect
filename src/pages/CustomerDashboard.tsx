@@ -7,7 +7,8 @@ import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, MapPin, Bus, Clock } from "lucide-react";
 import { BookingStatus } from "@/lib/types";
-import { useFormatters } from "@/hooks/use-formatters";
+import { useFormatters } from "@/hooks/useFormatters";
+import { StatusBadge } from "@/components/ui/status-badge";
 
 // Mock data for bookings
 const mockBookings = [
@@ -99,16 +100,6 @@ export default function CustomerDashboard() {
     });
     
     // In a real app, we would call an API to cancel the booking
-  };
-
-  const getStatusColor = (status: BookingStatus) => {
-    switch (status) {
-      case "Confirmed": return "bg-green-500";
-      case "Pending": return "bg-amber-500";
-      case "Completed": return "bg-blue-500";
-      case "Cancelled": return "bg-red-500";
-      default: return "bg-gray-500";
-    }
   };
 
   return (
