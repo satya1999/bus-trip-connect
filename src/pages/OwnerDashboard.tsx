@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Bus, Indian, CreditCard, User, MapPin, Clock, Check, X } from "lucide-react";
+import { Calendar, Bus, BadgeIndianRupee, CreditCard, User, MapPin, Clock, Check, X } from "lucide-react";
 import { BookingStatus, Bus as BusType } from "@/lib/types";
 import { mockBuses } from "@/lib/mockData";
 
