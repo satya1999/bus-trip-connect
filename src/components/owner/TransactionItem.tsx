@@ -1,5 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import { useFormatters } from "@/hooks/useFormatters";
 
 interface TransactionItemProps {
   id: string;
@@ -10,21 +11,7 @@ interface TransactionItemProps {
 }
 
 export const TransactionItem = ({ id, date, amount, type, status }: TransactionItemProps) => {
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    });
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
-      maximumFractionDigits: 0
-    }).format(amount);
-  };
+  const { formatDate, formatCurrency } = useFormatters();
 
   return (
     <div className="flex justify-between items-center p-4 border-b">

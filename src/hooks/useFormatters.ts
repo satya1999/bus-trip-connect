@@ -16,8 +16,25 @@ export const useFormatters = () => {
     }).format(amount);
   };
 
+  const formatPhone = (phone: string) => {
+    // Format phone number if needed
+    return phone;
+  };
+
+  const formatShortCurrency = (amount: number) => {
+    if (amount >= 100000) {
+      return `₹${(amount / 100000).toFixed(1)}L`;
+    } else if (amount >= 1000) {
+      return `₹${(amount / 1000).toFixed(0)}K`;
+    } else {
+      return `₹${amount}`;
+    }
+  };
+
   return {
     formatDate,
-    formatCurrency
+    formatCurrency,
+    formatPhone,
+    formatShortCurrency
   };
 };

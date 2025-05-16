@@ -4,6 +4,8 @@ import { User, Calendar, MapPin, Clock, CreditCard, Check, X } from "lucide-reac
 import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookingStatus } from "@/lib/types";
+import { StatusBadge, getStatusColor } from "@/components/ui/status-badge";
+import { useFormatters } from "@/hooks/useFormatters";
 
 interface BookingCardProps {
   booking: {
@@ -28,23 +30,7 @@ interface BookingCardProps {
 }
 
 export const BookingCard = ({ booking, onAccept, onReject }: BookingCardProps) => {
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    });
-  };
-
-  const getStatusColor = (status: BookingStatus) => {
-    switch (status) {
-      case "Confirmed": return "bg-green-500";
-      case "Pending": return "bg-amber-500";
-      case "Completed": return "bg-blue-500";
-      case "Cancelled": return "bg-red-500";
-      default: return "bg-gray-500";
-    }
-  };
+  const { formatDate, formatCurrency } = useFormatters();
 
   return (
     <Card key={booking.id} className="overflow-hidden">
@@ -57,9 +43,7 @@ export const BookingCard = ({ booking, onAccept, onReject }: BookingCardProps) =
               Booking ID: {booking.id}
             </CardDescription>
           </div>
-          <span className={`px-2 py-1 text-xs rounded-full text-white ${getStatusColor(booking.status)}`}>
-            {booking.status}
-          </span>
+          <StatusBadge status={booking.status} />
         </div>
       </CardHeader>
       <CardContent>
@@ -99,14 +83,14 @@ export const BookingCard = ({ booking, onAccept, onReject }: BookingCardProps) =
               <div>
                 <p className="text-sm font-medium">Payment Status</p>
                 <p className="text-xs text-muted-foreground">
-                  ₹{booking.advanceAmount} received, ₹{booking.remainingAmount} pending
+                  {formatCurrency(booking.advanceAmount)} received, {formatCurrency(booking.remainingAmount)} pending
                 </p>
               </div>
             </div>
             <div className="flex items-center">
               <CreditCard className="h-4 w-4 mr-2" />
               <span className="text-sm font-medium">
-                Total: ₹{booking.totalAmount}
+                Total: {formatCurrency(booking.totalAmount)}
               </span>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, MapPin, Bus, Clock } from "lucide-react";
 import { BookingStatus } from "@/lib/types";
+import { useFormatters } from "@/hooks/use-formatters";
 
 // Mock data for bookings
 const mockBookings = [
@@ -66,14 +66,7 @@ export default function CustomerDashboard() {
   const { toast } = useToast();
   const [bookings, setBookings] = useState(mockBookings);
   const [activeTab, setActiveTab] = useState("upcoming");
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    });
-  };
+  const { formatDate } = useFormatters();
 
   const getFilteredBookings = () => {
     const today = new Date();
@@ -208,9 +201,7 @@ export default function CustomerDashboard() {
                             Booking ID: {booking.id}
                           </CardDescription>
                         </div>
-                        <span className={`px-2 py-1 text-xs rounded-full text-white ${getStatusColor(booking.status)}`}>
-                          {booking.status}
-                        </span>
+                        <StatusBadge status={booking.status} />
                       </div>
                     </CardHeader>
                     <CardContent>
