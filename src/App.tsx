@@ -12,6 +12,12 @@ import BusListingPage from "./pages/BusListingPage";
 import BusDetailPage from "./pages/BusDetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import CustomerDashboard from "./pages/CustomerDashboard";
+import OwnerDashboard from "./pages/OwnerDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import OwnerKYC from "./pages/OwnerKYC";
+import AddBus from "./pages/AddBus";
+import PaymentPage from "./pages/PaymentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +33,7 @@ const App = () => (
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/payment" element={<PaymentPage />} />
               <Route
                 path="*"
                 element={
@@ -37,6 +44,11 @@ const App = () => (
                         <Route path="/" element={<Homepage />} />
                         <Route path="/buses" element={<BusListingPage />} />
                         <Route path="/buses/:id" element={<BusDetailPage />} />
+                        <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+                        <Route path="/owner-dashboard" element={<OwnerDashboard />} />
+                        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                        <Route path="/owner-kyc" element={<OwnerKYC />} />
+                        <Route path="/add-bus" element={<AddBus />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </main>

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { BusCard } from "@/components/BusCard";
 import { mockBuses } from "@/lib/mockData";
 import { Bus } from "@/lib/types";
-import { Check, MapPin, Star } from "lucide-react";
+import { Check, MapPin, Search, Star } from "lucide-react";
 
 export default function Homepage() {
   const [featuredBuses, setFeaturedBuses] = useState<Bus[]>([]);
@@ -84,7 +83,7 @@ export default function Homepage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-sm">
               <div className="w-16 h-16 bg-rentBus-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <SearchBar className="h-8 w-8 text-rentBus-blue" />
+                <Search className="h-8 w-8 text-rentBus-blue" />
               </div>
               <h3 className="text-xl font-bold mb-3">Search & Compare</h3>
               <p className="text-gray-600">

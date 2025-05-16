@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Bus, UserType } from "lucide-react";
+import { Bus } from "lucide-react";
+import { UserType } from "@/lib/types";
 
 export default function RegisterPage() {
   const { register } = useAuth();
